@@ -74,11 +74,10 @@ export default function Home() {
           onBeforePageScroll={handleBeforePageChange}
           customPageNumber={currentPage}
         >
-          <ProjectShowcaseSection />
-
           <BannerSection />
           <IntroSection />
           <SkillShowSection />
+          <ProjectShowcaseSection />
         </ReactPageScroller>
       </div>
     </>
@@ -253,10 +252,125 @@ const SkillShowSection = () => {
   );
 };
 
+const ProjectCard = ({ crrProject, assignedProject, projectDetails }: any) => {
+  const [showCard, setShowCard] = useState<boolean>(false);
+  const timeoutRef: any = useRef();
+  const { imgSrc, title, description } = projectDetails;
+
+  const cardInDom = crrProject === assignedProject || showCard;
+
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      setShowCard(crrProject === assignedProject);
+    }, 1000);
+  }, [crrProject]);
+
+  return crrProject === assignedProject ? (
+    <>
+      <div
+        className={`${styles["entry-left"]}  ${
+          styles["scroll-to-view-initial"]
+        } ${showCard ? styles["scroll-to-view"] : ""} ${
+          styles["project-left"]
+        }`}
+      >
+        {" "}
+        <Image
+          alt=""
+          className={styles["project-image"]}
+          width={1500}
+          height={1380}
+          src={imgSrc}
+        />
+      </div>
+      <div
+        className={`${styles["entry-right"]}  ${
+          styles["scroll-to-view-initial"]
+        } ${showCard ? styles["scroll-to-view"] : ""} ${
+          styles["project-right"]
+        }`}
+      >
+        {" "}
+        <h4 className={`text-5xl font-black mb-4`}>{title}</h4>
+        <h4 className={`text-4xl font-black `}>
+          Working in a startup as a team leader has been a rewarding experience
+          for me. I love creating complex web applications from the ground up
+          and solving problems with logic and code in an efficient way.
+        </h4>
+      </div>
+    </>
+  ) : null;
+};
+
 const ProjectShowcaseSection = () => {
+  const [crrPoject, setCrrProject] = useState<number>(-1);
+  const { elementRef: scrollToViewRef, showElement } = useScrollIntoView();
+  const crrProjectTimerRef: any = useRef();
+
+  useEffect(() => {
+    if (showElement) {
+      crrProjectTimerRef.current = setTimeout(() => {
+        setCrrProject(0);
+      }, 1000);
+    } else {
+      setCrrProject(-1);
+      if (crrProjectTimerRef.current) clearTimeout(crrProjectTimerRef.current);
+    }
+  }, [showElement]);
+
+  const projectDetails = [
+    {
+      imgSrc: "/assets/mockups/bc-mockup.png",
+      title: "BrainCells",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam assumenda ipsa alias excepturi accusantium sint qui! Quo odit qui deserunt sapiente delectus laudantium quaerat deleniti. ",
+    },
+  ];
+
+  const nextProject = () => setCrrProject((crrPoject: number) => crrPoject + 1);
+
+  const prevProject = () => setCrrProject((crrPoject: number) => crrPoject - 1);
+
   return (
     <div
+      ref={scrollToViewRef}
       className={`z-10 h-screen w-screen relative flex flex-row justify-center items-center font-sans subpixel-antialiased ${styles["project-section"]}`}
-    ></div>
+    >
+      <div className="flex justify-center flex-col items-center gap-x-5 h-4/5 w-4/5">
+        <div>
+          <h3 className={`text-6xl font-black text-center`}>Projects</h3>
+          <div className={styles["project-container"]}>
+            <div className={styles["project"]}>
+              {projectDetails.map((projectDetail: any, index: number) => {
+                return (
+                  <ProjectCard
+                    key={index}
+                    projectDetails={projectDetail}
+                    crrProject={crrPoject}
+                    assignedProject={index}
+                    showElement={showElement}
+                  />
+                );
+              })}
+              {/* <ProjectCard
+                crrProject={crrPoject}
+                assignedProject={0}
+                showElement={showElement}
+              /> */}
+              {/* <ProjectCard
+                crrProject={crrPoject}
+                assignedProject={1}
+                showElement={showElement}
+              /> */}
+            </div>
+          </div>
+        </div>
+        <div onClick={nextProject}>Next</div>
+        <div onClick={prevProject}>Prev</div>
+      </div>
+    </div>
   );
 };

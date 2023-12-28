@@ -28,8 +28,34 @@
   font-size: 10rem;
 }
 
+/* PROJECT SECTION */
+
 .project-section {
   background-color: #f25f5c;
+}
+
+.project {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+}
+.project-left {
+  width: 45vw;
+  /* height: 50vw; */
+  display: flex;
+  /* background-color: aliceblue; */
+}
+.project-right {
+  width: 45vw;
+  /* height: 50vw; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.project-image {
+  width: 90%;
+  height: min-content;
 }
 
 /* SCROLL TO VIEW  */
@@ -39,7 +65,7 @@
   transform: translateY(-100vh);
 }
 .entry-left {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(-100vw);
 }
 .entry-right {
