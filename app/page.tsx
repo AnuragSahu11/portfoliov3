@@ -13,6 +13,7 @@ import Image from "next/image";
 import useScrollIntoView from "@/hooks/useScrollIntoView";
 import { Icon } from "@iconify/react";
 import AnimatedEntryIcons from "@/components/pages/landing-page/AnimatedEntryIcons";
+import AnimatedMovementIcons from "@/components/pages/landing-page/AnimatedMovementIcons";
 
 // ** CONSTANTS
 const primaryTextColor = "#F25F5C";
@@ -78,6 +79,7 @@ export default function Home() {
           <IntroSection />
           <SkillShowSection />
           <ProjectShowcaseSection />
+          <AboutMeSection />
         </ReactPageScroller>
       </div>
     </>
@@ -328,6 +330,12 @@ const ProjectShowcaseSection = () => {
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam assumenda ipsa alias excepturi accusantium sint qui! Quo odit qui deserunt sapiente delectus laudantium quaerat deleniti. ",
     },
+    {
+      imgSrc: "/assets/mockups/bc-mockup.png",
+      title: "BrainCells",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam assumenda ipsa alias excepturi accusantium sint qui! Quo odit qui deserunt sapiente delectus laudantium quaerat deleniti. ",
+    },
   ];
 
   const nextProject = () => setCrrProject((crrPoject: number) => crrPoject + 1);
@@ -337,40 +345,93 @@ const ProjectShowcaseSection = () => {
   return (
     <div
       ref={scrollToViewRef}
-      className={`z-10 h-screen w-screen relative flex flex-row justify-center items-center font-sans subpixel-antialiased ${styles["project-section"]}`}
+      className={`z-10 h-screen w-screen relative flex flex-row justify-center items-center font-sans subpixel-antialiased ${styles["project-section"]} `}
     >
-      <div className="flex justify-center flex-col items-center gap-x-5 h-4/5 w-4/5">
-        <div>
-          <h3 className={`text-6xl font-black text-center`}>Projects</h3>
-          <div className={styles["project-container"]}>
-            <div className={styles["project"]}>
-              {projectDetails.map((projectDetail: any, index: number) => {
-                return (
-                  <ProjectCard
-                    key={index}
-                    projectDetails={projectDetail}
-                    crrProject={crrPoject}
-                    assignedProject={index}
-                    showElement={showElement}
-                  />
-                );
-              })}
-              {/* <ProjectCard
-                crrProject={crrPoject}
-                assignedProject={0}
-                showElement={showElement}
-              /> */}
-              {/* <ProjectCard
-                crrProject={crrPoject}
-                assignedProject={1}
-                showElement={showElement}
-              /> */}
-            </div>
+      <div
+        className={`flex justify-center flex-col items-center gap-x-5 h-4/5 w-4/5 ${styles[""]}`}
+      >
+        <div className={styles["project-container"]}>
+          <h3 className={`text-6xl font-black text-center`}>Work Experience</h3>
+
+          <div className={styles["project"]}>
+            {projectDetails.map((projectDetail: any, index: number) => {
+              return (
+                <ProjectCard
+                  key={index}
+                  projectDetails={projectDetail}
+                  crrProject={crrPoject}
+                  assignedProject={index}
+                  showElement={showElement}
+                />
+              );
+            })}
           </div>
         </div>
-        <div onClick={nextProject}>Next</div>
-        <div onClick={prevProject}>Prev</div>
+        <div
+          className={`${styles["project-navigation-container"]} flex flex-col text-2xl gap-1 ${styles["color-p"]} font-black`}
+        >
+          <button
+            className={`${styles["project-navigation-button"]}`}
+            onClick={nextProject}
+          >
+            Next
+          </button>
+          <button
+            className={`${styles["project-navigation-button"]}`}
+            onClick={prevProject}
+          >
+            Prev
+          </button>
+        </div>
       </div>
     </div>
+  );
+};
+
+const AboutMeSection = () => {
+  const { elementRef: scrollToViewRef, showElement } = useScrollIntoView();
+  console.log(showElement);
+  return (
+    <>
+      <div
+        className={`z-10 h-screen w-screen relative flex flex-row font-sans subpixel-antialiased ${styles["about-section"]}`}
+      >
+        <div
+          ref={scrollToViewRef}
+          className={`flex w-screen justify-center mt-20 pt-20 align-middle ${styles["about-heading"]}`}
+        >
+          <div
+            className={`w-3/4 p-10 flex flex-col ${styles["about-text"]}  ${
+              styles["entry-bottom"]
+            }  ${styles["scroll-to-view-initial"]} ${
+              showElement ? styles["scroll-to-view"] : ""
+            }`}
+          >
+            <h4 className="text-5xl font-black">
+              Want to build an Exciting New Website 🤩?
+              <br></br>
+              or
+              <br></br>
+              Give a makeover to an Existing Website ✅?
+            </h4>
+            <h5 className="mt-5 text-4xl font-black">
+              {" "}
+              Get in touch with me or See my resume.
+            </h5>
+          </div>
+        </div>
+        <div
+          className={`w-3/4	flex flex-col justify-evenly h-full items-center ${
+            styles["about-icons"]
+          } ${styles["entry-right"]}  ${styles["scroll-to-view-initial"]} ${
+            showElement ? styles["scroll-to-view"] : ""
+          }`}
+        >
+          <AnimatedMovementIcons iconNumber={1} icon={"skill-icons:linkedin"} />
+          <AnimatedMovementIcons iconNumber={2} icon={"devicon:twitter"} />
+          <AnimatedMovementIcons iconNumber={3} icon={"logos:google-gmail"} />
+        </div>
+      </div>
+    </>
   );
 };
