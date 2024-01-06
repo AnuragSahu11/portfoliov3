@@ -4,9 +4,9 @@ import useScrollIntoView from "@/hooks/useScrollIntoView";
 const AnimatedEntryIcons = ({ icon, showElement, entryDirection }: any) => {
   return (
     <div
-      className={`text-9xl font-black ${styles["color-p"]} ${
-        styles[entryDirection]
-      }  ${styles["scroll-to-view-initial"]} ${
+      className={`text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-black ${
+        styles["color-p"]
+      } ${styles[entryDirection]}  ${styles["scroll-to-view-initial"]} ${
         showElement ? styles["scroll-to-view"] : ""
       }`}
     >

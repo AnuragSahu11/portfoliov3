@@ -5,7 +5,7 @@ const AnimatedMovementIcons = ({ icon, iconNumber }: any) => {
   const animationNumber = `vibrate-${iconNumber}`;
   return (
     <div
-      className={`text-5xl font-black cursor-pointer ${styles[animationNumber]}`}
+      className={`text-5xl sm:text-7xl font-black cursor-pointer ${styles[animationNumber]}`}
     >
       <Icon icon={icon} />
     </div>

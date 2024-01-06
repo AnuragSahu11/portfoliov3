@@ -5,8 +5,8 @@
 /* INTRO SECTION */
 
 .intro-image {
-  height: 90%;
-  width: 90%;
+  /* height: 50%;
+  width: 40%; */
 }
 
 .intro-section-container {
@@ -15,8 +15,6 @@
 
 .intro-section {
   background-color: #f25f5c;
-  border-top-right-radius: 1000px;
-  border-bottom-right-radius: 1000px;
   opacity: 0;
   transform: translateX(-100%);
 }
@@ -42,21 +40,19 @@
 }
 
 .project {
-  padding: 2rem;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   gap: 3vw;
   height: 70vh;
 }
 .project-left {
-  width: 45vw;
+  /* width: 45vw; */
   /* height: 50vw; */
-  display: flex;
   /* background-color: aliceblue; */
 }
 .project-right {
-  width: 45vw;
+  /* width: 45vw; */
   /* height: 50vw; */
   /* justify-content: center; */
   /* align-items: center; */
@@ -93,7 +89,7 @@
 .about-text {
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
-  background-color: #f25f5c;
+  background-color: rgba(242, 95, 92, 0.95);
 }
 .about-icons {
   /* background-color: antiquewhite; */

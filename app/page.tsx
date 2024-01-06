@@ -91,7 +91,9 @@ const BannerSection = () => {
     <div
       className={`z-10 h-screen w-screen relative flex justify-center	items-center font-sans subpixel-antialiased	`}
     >
-      <h1 className={`text-8xl font-black ${styles["color-p"]}`}>
+      <h1
+        className={`text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-black ${styles["color-p"]}`}
+      >
         <span
           className={`${styles["text-focus-in"]} ${styles["animation-delay-one"]}`}
         >
@@ -131,26 +133,34 @@ const IntroSection = () => {
       </div> */}
       <div
         ref={scrollToViewRef}
-        className={`flex justify-center flex-row items-center	gap-x-5 h-4/5 w-4/5 ${
+        className={`flex items-center p-5 sm:p-10 md:p-1 justify-center flex-col md:flex-row 	gap-x-5 h-full	 md:h-4/5 xl:w-4/5 md:rounded-tr-full md:rounded-br-full ${
           styles["intro-section"]
         } ${styles["scroll-to-view-initial"]} ${
           showElement ? styles["scroll-to-view"] : ""
         }`}
       >
-        <div className={`basis-1/3 ${styles["intro-image-container"]} `}>
+        <div
+          className={`h-2/4 md:h-auto basis-1/3 ${styles["intro-image-container"]} `}
+        >
           <Image
             width={500}
             height={500}
             alt="anurag"
-            className={`${styles["intro-image"]}`}
+            className={`${styles["intro-image"]} w-fit	 h-full md:w-5/6 md:h-5/6`}
             src="/assets/pictures/fotor-ai-20231203173059-modified.png"
           />
         </div>
-        <div className={`flex flex-col basis-2/4 gap-y-5`}>
-          <h4 className={`text-6xl font-black `}>
+        <div
+          className={`flex text-center md:text-left flex-col basis-2/4 gap-y-5`}
+        >
+          <h4
+            className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black `}
+          >
             Hi, I am Anurag, Nice to meet you
           </h4>
-          <h4 className={`text-4xl font-black `}>
+          <h4
+            className={`text-1xl sm:text-3xl md:text-3xl lg:text-4xl font-black `}
+          >
             Working in a startup as a team leader has been a rewarding
             experience for me. I love creating complex web applications from the
             ground up and solving problems with logic and code in an efficient
@@ -174,7 +184,11 @@ const SkillShowSection = () => {
         className="flex justify-center flex-col items-center gap-x-5 h-4/5 w-4/5"
       >
         <div>
-          <h3 className={`text-6xl font-black ${styles["color-p"]}`}>Skills</h3>
+          <h3
+            className={`text-4xl md:text-5xl lg:text-6xl font-black ${styles["color-p"]}`}
+          >
+            Skills
+          </h3>
         </div>
         <div className="flex flex-row p-11 gap-7 flex-wrap">
           <AnimatedEntryIcons
@@ -273,7 +287,7 @@ const ProjectCard = ({ crrProject, assignedProject, projectDetails }: any) => {
   return crrProject === assignedProject ? (
     <>
       <div
-        className={`${styles["entry-left"]}  ${
+        className={`flex w-11/12	 ${styles["entry-left"]}  ${
           styles["scroll-to-view-initial"]
         } ${showCard ? styles["scroll-to-view"] : ""} ${
           styles["project-left"]
@@ -289,15 +303,17 @@ const ProjectCard = ({ crrProject, assignedProject, projectDetails }: any) => {
         />
       </div>
       <div
-        className={`${styles["entry-right"]}  ${
+        className={`p-1 sm:p-0 w-full ${styles["entry-right"]}  ${
           styles["scroll-to-view-initial"]
         } ${showCard ? styles["scroll-to-view"] : ""} ${
           styles["project-right"]
         }`}
       >
         {" "}
-        <h4 className={`text-5xl font-black mb-4`}>{title}</h4>
-        <h4 className={`text-4xl font-black `}>
+        <h4 className={`sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4`}>
+          {title}
+        </h4>
+        <h4 className={`sm:text-2xl md:text-3xl lg:text-4xl font-black `}>
           Working in a startup as a team leader has been a rewarding experience
           for me. I love creating complex web applications from the ground up
           and solving problems with logic and code in an efficient way.
@@ -348,12 +364,16 @@ const ProjectShowcaseSection = () => {
       className={`z-10 h-screen w-screen relative flex flex-row justify-center items-center font-sans subpixel-antialiased ${styles["project-section"]} `}
     >
       <div
-        className={`flex justify-center flex-col items-center gap-x-5 h-4/5 w-4/5 ${styles[""]}`}
+        className={`flex justify-center flex-col items-center gap-x-5 h-full w-full sm:h-4/5 sm:w-4/5 ${styles[""]}`}
       >
         <div className={styles["project-container"]}>
-          <h3 className={`text-6xl font-black text-center`}>Work Experience</h3>
+          <h3 className={`lg:text-6xl font-black text-center`}>
+            Work Projects
+          </h3>
 
-          <div className={styles["project"]}>
+          <div
+            className={`${styles["project"]} sm:p-1 flex flex-col sm:flex-row justify-center items-center`}
+          >
             {projectDetails.map((projectDetail: any, index: number) => {
               return (
                 <ProjectCard
@@ -368,7 +388,7 @@ const ProjectShowcaseSection = () => {
           </div>
         </div>
         <div
-          className={`${styles["project-navigation-container"]} flex flex-col text-2xl gap-1 ${styles["color-p"]} font-black`}
+          className={`${styles["project-navigation-container"]} flex flex-col md:text-2xl gap-1 ${styles["color-p"]} font-black`}
         >
           <button
             className={`${styles["project-navigation-button"]}`}
@@ -390,46 +410,48 @@ const ProjectShowcaseSection = () => {
 
 const AboutMeSection = () => {
   const { elementRef: scrollToViewRef, showElement } = useScrollIntoView();
-  console.log(showElement);
   return (
     <>
       <div
-        className={`z-10 h-screen w-screen relative flex flex-row font-sans subpixel-antialiased ${styles["about-section"]}`}
+        className={`z-10 h-screen w-screen relative flex flex-col sm:flex-row font-sans subpixel-antialiased ${styles["about-section"]}`}
       >
         <div
           ref={scrollToViewRef}
-          className={`flex w-screen justify-center mt-20 pt-20 align-middle ${styles["about-heading"]}`}
+          className={`flex h-full flex-col-reverse sm:flex-row w-screen justify-center mt-20 pt-20 align-middle ${styles["about-heading"]}`}
         >
           <div
-            className={`w-3/4 p-10 flex flex-col ${styles["about-text"]}  ${
-              styles["entry-bottom"]
-            }  ${styles["scroll-to-view-initial"]} ${
+            className={`h-full sm:w-2/3 md:w-8/12 lg:w-5/12 p-10 flex flex-col ${
+              styles["about-text"]
+            }  ${styles["entry-bottom"]}  ${styles["scroll-to-view-initial"]} ${
               showElement ? styles["scroll-to-view"] : ""
             }`}
           >
-            <h4 className="text-5xl font-black">
+            <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
               Want to build an Exciting New Website 🤩?
               <br></br>
               or
               <br></br>
               Give a makeover to an Existing Website ✅?
             </h4>
-            <h5 className="mt-5 text-4xl font-black">
+            <h5 className="mt-5 text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black">
               {" "}
               Get in touch with me or See my resume.
             </h5>
           </div>
-        </div>
-        <div
-          className={`w-3/4	flex flex-col justify-evenly h-full items-center ${
-            styles["about-icons"]
-          } ${styles["entry-right"]}  ${styles["scroll-to-view-initial"]} ${
-            showElement ? styles["scroll-to-view"] : ""
-          }`}
-        >
-          <AnimatedMovementIcons iconNumber={1} icon={"skill-icons:linkedin"} />
-          <AnimatedMovementIcons iconNumber={2} icon={"devicon:twitter"} />
-          <AnimatedMovementIcons iconNumber={3} icon={"logos:google-gmail"} />
+          <div
+            className={`mb-5 sm:mb-0 sm:w-1/4	flex flex-row sm:flex-col justify-evenly h-full items-center ${
+              styles["about-icons"]
+            } ${styles["entry-right"]}  ${styles["scroll-to-view-initial"]} ${
+              showElement ? styles["scroll-to-view"] : ""
+            }`}
+          >
+            <AnimatedMovementIcons
+              iconNumber={1}
+              icon={"skill-icons:linkedin"}
+            />
+            <AnimatedMovementIcons iconNumber={2} icon={"devicon:twitter"} />
+            <AnimatedMovementIcons iconNumber={3} icon={"logos:google-gmail"} />
+          </div>
         </div>
       </div>
     </>
