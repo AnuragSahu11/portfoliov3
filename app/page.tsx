@@ -59,9 +59,7 @@ export default function Home() {
   }, [vantaEffect]);
 
   // ** FUNCTIONS
-  const handleBeforePageChange = (currentPage: number) => {
-    console.log(currentPage);
-  };
+  const handleBeforePageChange = (currentPage: number) => {};
   const handlePageChange = (currentPage: number) => {
     setCurrentPage(currentPage);
   };
@@ -147,7 +145,7 @@ const IntroSection = () => {
             height={500}
             alt="anurag"
             className={`${styles["intro-image"]} w-fit	 h-full md:w-5/6 md:h-5/6`}
-            src="/assets/pictures/fotor-ai-20231203173059-modified.png"
+            src="/assets/pictures/cropped_image.png"
           />
         </div>
         <div
@@ -156,15 +154,14 @@ const IntroSection = () => {
           <h4
             className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black `}
           >
-            Hi, I am Anurag, Nice to meet you
+            Engineer, Pixel Perfectionist
           </h4>
           <h4
             className={`text-1xl sm:text-3xl md:text-3xl lg:text-4xl font-black `}
           >
-            Working in a startup as a team leader has been a rewarding
-            experience for me. I love creating complex web applications from the
-            ground up and solving problems with logic and code in an efficient
-            way.
+            As a web developer I have thrived in early-stage, fast-paced
+            startup, where I led the front-end team. My work spanning various
+            projects and features is utilized by users worldwide.
           </h4>
         </div>
       </div>
@@ -281,7 +278,7 @@ const ProjectCard = ({ crrProject, assignedProject, projectDetails }: any) => {
         clearTimeout(timeoutRef.current);
       }
       setShowCard(crrProject === assignedProject);
-    }, 1000);
+    }, 500);
   }, [crrProject]);
 
   return crrProject === assignedProject ? (
@@ -314,9 +311,7 @@ const ProjectCard = ({ crrProject, assignedProject, projectDetails }: any) => {
           {title}
         </h4>
         <h4 className={`sm:text-2xl md:text-3xl lg:text-4xl font-black `}>
-          Working in a startup as a team leader has been a rewarding experience
-          for me. I love creating complex web applications from the ground up
-          and solving problems with logic and code in an efficient way.
+          {description}
         </h4>
       </div>
     </>
@@ -327,7 +322,6 @@ const ProjectShowcaseSection = () => {
   const [crrPoject, setCrrProject] = useState<number>(-1);
   const { elementRef: scrollToViewRef, showElement } = useScrollIntoView();
   const crrProjectTimerRef: any = useRef();
-
   useEffect(() => {
     if (showElement) {
       crrProjectTimerRef.current = setTimeout(() => {
@@ -342,21 +336,35 @@ const ProjectShowcaseSection = () => {
   const projectDetails = [
     {
       imgSrc: "/assets/mockups/bc-mockup.png",
-      title: "BrainCells",
+      title: "@BrainCells",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam assumenda ipsa alias excepturi accusantium sint qui! Quo odit qui deserunt sapiente delectus laudantium quaerat deleniti. ",
+        "Developed a child-friendly e-learning platform with over 30 interactive games, ensuring full responsiveness and audio features. Also engineered a streamlined event booking system.",
     },
     {
-      imgSrc: "/assets/mockups/bc-mockup.png",
-      title: "BrainCells",
+      imgSrc: "/assets/mockups/t-mockup.png",
+      title: "",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam assumenda ipsa alias excepturi accusantium sint qui! Quo odit qui deserunt sapiente delectus laudantium quaerat deleniti. ",
+        "Built an enterprise platform with role-based access control for client onboarding, invoicing, service desk, and conference room bookings and more features.",
     },
   ];
 
-  const nextProject = () => setCrrProject((crrPoject: number) => crrPoject + 1);
+  const nextProject = () =>
+    setCrrProject((crrPoject: number) => {
+      if (crrPoject >= projectDetails.length - 1) {
+        return 0;
+      } else {
+        return crrPoject + 1;
+      }
+    });
 
-  const prevProject = () => setCrrProject((crrPoject: number) => crrPoject - 1);
+  const prevProject = () =>
+    setCrrProject((crrPoject: number) => {
+      if (crrPoject === 0) {
+        return projectDetails.length - 1;
+      } else {
+        return crrPoject - 1;
+      }
+    });
 
   return (
     <div
@@ -368,7 +376,7 @@ const ProjectShowcaseSection = () => {
       >
         <div className={styles["project-container"]}>
           <h3 className={`lg:text-6xl font-black text-center`}>
-            Work Projects
+            Work Experience
           </h3>
 
           <div
@@ -431,11 +439,14 @@ const AboutMeSection = () => {
               <br></br>
               or
               <br></br>
-              Give a makeover to an Existing Website ✅?
+              Give a makeover to an Existing Website 🎁?
             </h4>
             <h5 className="mt-5 text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black">
               {" "}
-              Get in touch with me or See my resume.
+              Get in touch with me or{" "}
+              <span className="cursor-pointer hover:underline">
+                View my resume.
+              </span>
             </h5>
           </div>
           <div
@@ -448,9 +459,20 @@ const AboutMeSection = () => {
             <AnimatedMovementIcons
               iconNumber={1}
               icon={"skill-icons:linkedin"}
+              redirectLink={
+                "https://www.linkedin.com/in/anurag-sahu-241520193/"
+              }
             />
-            <AnimatedMovementIcons iconNumber={2} icon={"devicon:twitter"} />
-            <AnimatedMovementIcons iconNumber={3} icon={"logos:google-gmail"} />
+            <AnimatedMovementIcons
+              iconNumber={2}
+              icon={"devicon:twitter"}
+              redirectLink={"https://twitter.com/AnuragIsSahu"}
+            />
+            <AnimatedMovementIcons
+              iconNumber={3}
+              icon={"logos:google-gmail"}
+              redirectLink={"mailto:anrgshu@gmail.com"}
+            />
           </div>
         </div>
       </div>
