@@ -149,7 +149,7 @@ const IntroSection = () => {
           />
         </div>
         <div
-          className={`flex text-center md:text-left flex-col basis-2/4 gap-y-5`}
+          className={`flex text-center md:text-left flex-col basis-2/4 gap-y-5 ${styles["color-w"]}`}
         >
           <h4
             className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black `}
@@ -372,7 +372,7 @@ const ProjectShowcaseSection = () => {
       className={`z-10 h-screen w-screen relative flex flex-row justify-center items-center font-sans subpixel-antialiased ${styles["project-section"]} `}
     >
       <div
-        className={`flex justify-center flex-col items-center gap-x-5 h-full w-full sm:h-4/5 sm:w-4/5 ${styles[""]}`}
+        className={`flex justify-center flex-col items-center gap-x-5 h-full w-full sm:h-4/5 sm:w-4/5 ${styles["color-w"]}`}
       >
         <div className={styles["project-container"]}>
           <h3 className={`lg:text-6xl font-black text-center`}>
@@ -421,7 +421,7 @@ const AboutMeSection = () => {
   return (
     <>
       <div
-        className={`z-10 h-screen w-screen relative flex flex-col sm:flex-row font-sans subpixel-antialiased ${styles["about-section"]}`}
+        className={`z-10 h-screen w-screen relative flex flex-col sm:flex-row font-sans subpixel-antialiased ${styles["about-section"]} ${styles["color-w"]}`}
       >
         <div
           ref={scrollToViewRef}
