@@ -14,6 +14,7 @@ import useScrollIntoView from "@/hooks/useScrollIntoView";
 import { Icon } from "@iconify/react";
 import AnimatedEntryIcons from "@/components/pages/landing-page/AnimatedEntryIcons";
 import AnimatedMovementIcons from "@/components/pages/landing-page/AnimatedMovementIcons";
+import MouseCursor from "../components/general-components/MouseCursor/MouseCursor";
 
 // ** CONSTANTS
 const primaryTextColor = "#F25F5C";
@@ -68,6 +69,7 @@ export default function Home() {
   return (
     <>
       <div className="fixed top-0 left-0 z-0" ref={vantaRef}>
+        <MouseCursor />
         <ReactPageScroller
           pageOnChange={handlePageChange}
           onBeforePageScroll={handleBeforePageChange}

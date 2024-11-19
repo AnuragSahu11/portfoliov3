@@ -160,6 +160,11 @@
   visibility: visible;
 }
 
+.scale:hover {
+  transition: 0.2s;
+  scale: 1.1;
+}
+
 /* ANIMATION */
 
 .vibrate-1 {

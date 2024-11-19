@@ -5,7 +5,7 @@ const AnimatedMovementIcons = ({ icon, iconNumber, redirectLink }: any) => {
   const animationNumber = `vibrate-${iconNumber}`;
   return (
     <div
-      className={`text-5xl sm:text-7xl font-black cursor-pointer ${styles[animationNumber]}`}
+      className={`text-5xl sm:text-7xl font-black cursor-pointer ${styles[animationNumber]} ${styles["scale"]}`}
     >
       <a target="blank" href={redirectLink}>
         <Icon icon={icon} />
