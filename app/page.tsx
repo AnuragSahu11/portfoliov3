@@ -189,7 +189,7 @@ const SkillShowSection = () => {
             Skills
           </h3>
         </div>
-        <div className="flex flex-row p-11 gap-7 flex-wrap">
+        <div className="flex max-w-[1200px] flex-row p-11 gap-7 flex-wrap">
           <AnimatedEntryIcons
             icon="devicon:react"
             entryDirection={"entry-top-left"}
